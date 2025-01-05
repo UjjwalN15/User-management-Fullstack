@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% comment %} <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,4 +26,81 @@
         </div>
     </header>
 </body>
+</html> {% endcomment %}
+<!DOCTYPE html>
+   <html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      {%load static%}
+
+      <!--=============== REMIXICONS ===============-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+
+      <!--=============== CSS ===============-->
+      <link rel="stylesheet" href="{%static 'css/utility.css'%}">
+      <link rel="stylesheet" href="{%static 'css/navbar.css'%}">
+
+      <title>Navbar</title>
+   </head>
+   <body>
+      <!--==================== HEADER ====================-->
+        <header class="header" id="header">
+            <nav class="nav container">
+                <h3><a href="{%url 'enterprise_user_home'%}" title="Landing Page">User Management System</a></h3>
+
+                    <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="{%url 'create_post'%}" class="nav__link" title="Create Post">
+                                <i class="ri-arrow-right-up-line"></i>
+                                <span>Create a Post</span>
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="{%url 'my_posts'%}" class="nav__link" title="My Posts">
+                                <i class="ri-arrow-right-up-line"></i>
+                                <span>My Posts</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Close button -->
+                    <div class="nav__close" id="nav-close">
+                        <i class="ri-close-large-line"></i>
+                    </div>
+
+                    <div class="nav__social">
+                        <div class="name-container">Hi <a href="{%url 'dashboard'%}" title="Dashboard">{{user.email}}</a></div>
+                    </div>
+                    </div>
+
+                    <!-- Toggle button -->
+                    <div class="nav__toggle" id="nav-toggle">
+                    <i class="ri-menu-line"></i>
+                    </div>
+            </nav>
+      </header>
+      {% comment %} <script src="main.js"></script> {% endcomment %}
+   </body>
+   <script>
+        /*=============== SHOW MENU ===============*/
+    const navMenu = document.getElementById('nav-menu'),
+    navToggle = document.getElementById('nav-toggle'),
+    navClose = document.getElementById('nav-close')
+
+    /* Menu show */
+    if(navToggle){
+    navToggle.addEventListener('click', () =>{
+    navMenu.classList.add('show-menu')
+    })
+    }
+
+    /* Menu hidden */
+    if(navClose){
+    navClose.addEventListener('click', () =>{
+    navMenu.classList.remove('show-menu')
+    })
+    }
+   </script>
 </html>

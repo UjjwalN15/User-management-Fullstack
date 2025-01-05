@@ -1,30 +1,5 @@
-header{
-    height: 100px;
-    width: 100vw;
-}
-.container{
-    padding: 20px;
-}
-nav{
-    width: 90%;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.25rem;
-    color: black;
-    background-color: #aaa;
-    padding: 20px;
-    border-radius: 20px;
-    position: fixed;
-    z-index: 1000;
-}
-.name-container a{
-    color: black;
-}
-ul{
-    gap: 30px;
-}
 .posts{
-    margin-top: 50px;
+    margin-top: 100px;
     height: 100vh;
     width: 100vw;
     padding: 20px;
@@ -44,10 +19,10 @@ ul{
 }
 .post-card{
     height: max-content;
-    width: 23%;
+    width: 30%;
     background-color: green;
     border-radius: 20px;
-    padding: 10px;
+    padding: 20px;
     gap: 20px;
     background: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -96,4 +71,9 @@ ul{
 .view-post-btn{
     width: 100%;
     padding: 10px;
+}
+@media screen and (max-width: 900px){
+    .post-card{
+        width: 100%;
+    }
 }
