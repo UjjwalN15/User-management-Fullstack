@@ -1,0 +1,46 @@
+header{
+    height: 100px;
+    width: 100vw;
+}
+.container{
+    padding: 20px;
+    gap: 20px;
+}
+nav{
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.25rem;
+    color: black;
+    background-color: #aaa;
+    padding: 20px;
+    border-radius: 20px;
+    position: fixed;
+    z-index: 1000;
+}
+ul{
+    gap: 30px;
+}
+.container h2{
+    align-self: center;
+    font-size: 2rem;
+}
+.container input[type="submit"]{
+    width: max-content;
+    align-self: center;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.container form{
+    justify-content: flex-start;
+    width: 100%;
+    gap: 30px;
+}
+form input, textarea, form label{
+    width: 100%;
+    font-size:1.25rem ;
+}
+.create-post-body{
+    margin-top: 50px;
+}

@@ -1,0 +1,99 @@
+header{
+    height: 100px;
+    width: 100vw;
+}
+.container{
+    padding: 20px;
+}
+nav{
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.25rem;
+    color: black;
+    background-color: #aaa;
+    padding: 20px;
+    border-radius: 20px;
+    position: fixed;
+    z-index: 1000;
+}
+.name-container a{
+    color: black;
+}
+ul{
+    gap: 30px;
+}
+.posts{
+    margin-top: 50px;
+    height: 100vh;
+    width: 100vw;
+    padding: 20px;
+    gap: 20px;
+    flex-direction: column;
+}
+.posts .container{
+    height: 100%;
+    flex-wrap: wrap;
+    gap: 30px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.posts .container::-webkit-scrollbar {
+    display: none;         /* Hides the scrollbar in WebKit browsers (Chrome, Edge, Safari) */
+}
+.post-card{
+    height: max-content;
+    width: 23%;
+    background-color: green;
+    border-radius: 20px;
+    padding: 10px;
+    gap: 20px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.post-card img{
+    width: 100%;
+    height: 50%;
+    border-radius: 20px;
+}
+.post-card button{
+    border-radius: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.post-card button:hover{
+    background-color: #bbb;
+}
+.clicksandviews{
+    width: 100%;
+    height: 20px;
+}
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.pagination button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pagination button.active {
+    background-color: #0056b3;
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+.view-post-btn{
+    width: 100%;
+    padding: 10px;
+}

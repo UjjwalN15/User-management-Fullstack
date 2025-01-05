@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+    {%load static%}
+    <link rel="stylesheet" href="{%static 'css/utility.css'%}">
+    <link rel="stylesheet" href="{%static 'css/view_post.css'%}">
+</head>
+
+<body>
+    {% include 'user_navbar.html'%}
+    <section class="view-post flex-center">
+        <div class="container flex-column">
+            <h2>{{post.title}}</h2>
+            <img src="{{post.image.url}}" alt="Post Image">
+            <p>{{post.description}}</p>
+            <form action="{% url 'like_post_user' post.id %}" method="POST" class="flex-center">
+                {% csrf_token %}
+                <button class="button like-btn">Like this post</button>
+            </form>
+        </div>
+    </section>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const likeButton = document.querySelector('.like-btn');
+        const clicksCount = document.querySelector('.clicks-count');
+
+        likeButton.addEventListener('click', () => {
+            const postId = likeButton.getAttribute('data-id');
+
+            fetch(`/like_post/${postId}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}', // Use the CSRF token
+                    'X-Requested-With': 'XMLHttpRequest' // Indicates an AJAX request
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.clicks !== undefined) {
+                    clicksCount.textContent = `Likes: ${data.clicks}`;
+                }
+            })
+            .catch(error => {
+                console.error('Error liking the post:', error);
+            });
+        });
+    });
+</script>
+</html>

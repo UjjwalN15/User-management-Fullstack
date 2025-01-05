@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management Systen</title>
+    {% load static%}
+    <link rel="stylesheet" href="{%static 'css/landingpage.css'%}">
+    <link rel="stylesheet" href="{%static 'css/utility.css'%}">
+    <style>
+        .landing-page{
+            background-image: url('{%static 'assets/th.jpeg'%}');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-page flex-center">
+        <header class="flex-center">
+            <h2>User Management System</h2>
+        </header>
+        <section class="landing-content flex-center">
+            <p>
+                A User Management System built on Django's MVT (Model-View-Template) architecture is a web application
+                that efficiently handles user authentication, registration, and profile management. The Model defines
+                the user data structure, including fields like username, password, and roles. The View contains the
+                business logic, managing user actions such as login, registration, and profile updates, and ensures
+                proper access control. The Template generates the front-end user interface, presenting forms for
+                interaction and displaying relevant data. This system often includes features like user authentication,
+                password recovery, and role-based access control, leveraging Django's built-in tools for security, such
+                as hashed passwords and CSRF protection, ensuring a scalable and secure user management experience.</p>
+        </section>
+        <section class="landing-buttons flex-center">
+            <a href="{%url 'login'%}" title="Login"><button class="landingbutton">Login</button></a>
+            <a href="{%url 'register'%}" title="Register"><button class="landingbutton">Register</button></a>
+        </section>
+    </div>
+</body>
+
+</html>

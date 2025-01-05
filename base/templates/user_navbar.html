@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dahsboard</title>
+    {%load static%}
+    <link rel="stylesheet" href="{%static 'css/utility.css'%}">
+    <link rel="stylesheet" href="{%static 'css/navbar.css'%}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="flex-center">
+        <div class="container">
+            <nav class="flex">
+                <div class="logo-container">
+                    <h3><a href="{%url 'user_home'%}" title="Landing Page">User Management System</a></h3>
+                </div>
+                <!-- <div class="menu">
+                    <ul class="flex">
+                        <li><a href="create_post.html" title="Create a post">Create a Post</a></li>
+                        <li><a href="my_posts.html" title="My Posts">My Posts</a></li>
+                    </ul>
+                </div> -->
+                <div class="name-container">Hi <a href="{%url 'user_dashboard'%}" title="Dashboard">{{user.email}}</a></div>
+            </nav>
+        </div>
+    </header>
+</body>
+</html>

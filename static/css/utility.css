@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body{
+    overflow-x: hidden;
+}
+.container{
+    width: 90%;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+li:hover{
+    transform: translateY(-5px);
+}
+li{
+    list-style: none;
+    transition: all 0.5s ease;
+}
+.flex{
+    display: flex;
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.space-between{
+    display: flex;
+    justify-content: space-between;
+}

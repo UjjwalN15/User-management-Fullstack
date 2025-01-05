@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    {%load static%}
+    <link rel="stylesheet" href="{%static 'css/utility.css'%}">
+    <link rel="stylesheet" href="{%static 'css/login.css'%}">
+    <style>
+        .register{
+            background-image: url('{%static 'assets/th.jpeg'%}');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="register flex-center">
+        <div class="register-form flex-center">
+            <h2>Register</h2>
+            <form action="#" method="post" class="flex-column " id="register_form">
+                {%csrf_token%}
+                <input type="email" placeholder="Enter your Email (e.g. example@gmail.com)" name="email" required>
+                <p id="popup-message"></p>
+                <input type="password" placeholder="Enter your Password" name="password" id="register_password" required>
+                <input type="password" placeholder="Confirm your Password" name="confirm_password" id="registerc_password" required>
+                <div class="user-selection flex">
+                    <label for="user-type">Are you a:</label><br>
+                    <input type="radio" id="enterprise" name="user-type" value="Enterprise user" required>
+                    <label for="enterprise">Enterprise user</label>
+                    <input type="radio" id="user" name="user-type" value="User" required>
+                    <label for="user">User</label>
+                </div>
+                <input type="submit" value="Register" class="login-button button">
+            </form>
+            <p>Already Have an account? <a href="{%url 'login'%}" class="login-here" title="Login">Login Here</a></p>
+        </div>
+    </div>
+</body>
+<script>
+    
+  // Add validation logic
+  const registerForm = document.getElementById('register_form');
+
+  registerForm.addEventListener('submit', (event) => {
+      const password = document.getElementById('register_password').value;
+      const confirmPassword = document.getElementById('registerc_password').value;
+
+      // Check if passwords match
+      if (password !== confirmPassword) {
+          alert("Passwords do not match!");
+          event.preventDefault(); // Stop the form submission
+      }
+  });
+
+    const popup_message = document.getElementById('popup-message');
+    popup_message.style.display = 'none'; // Hide the popup initially
+
+    function show_message(message) {
+        popup_message.innerText = message; // Set the message text
+        popup_message.style.display = 'block'; // Show the popup
+        popup_message.style.color = 'white'; // Set the text color (optional styling)
+        setTimeout(() => {
+            popup_message.style.display = "none"; // Hide the popup after 5 seconds
+        }, 5000);
+    }
+
+    {% if messages %}
+    {% for message in messages %}
+    show_message('{{ message }}'); // Trigger the popup for each message
+    {% endfor %}
+    {% endif %}
+
+</script>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {%load static%}
+    <link rel="stylesheet" href="{%static 'css/utility.css'%}">
+    <link rel="stylesheet" href="{%static 'css/login.css'%}">
+    <style>
+        .login{
+            background-image: url('{%static 'assets/th.jpeg'%}');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="login flex-center">
+        <div class="login-form flex-center">
+            <h2>Login</h2>
+            <form action="#" method="post" class="flex-column">
+                {%csrf_token%}
+                <p id="popup-message">Invalid Credentials. Please check your username and password and try again</p>
+                <input type="email" placeholder="Enter your Email (e.g. example@gmail.com)" name="email" required>
+                <input type="password" placeholder="Enter your Password" name="password" required>
+                <input type="submit" value="Login" class="login-button button">
+            </form>
+            <p>Don't have an account? <a href="{%url 'register'%}" title="Register">Register Here</a></p>
+        </div>
+    </div>
+</body>
+<script>
+    const popup_message = document.getElementById('popup-message');
+    popup_message.style.display = 'none'; // Hide the popup initially
+
+    function show_message(message) {
+        popup_message.innerText = message; // Set the message text
+        popup_message.style.display = 'block'; // Show the popup
+        popup_message.style.color = 'white'; // Set the text color (optional styling)
+        setTimeout(() => {
+            popup_message.style.display = "none"; // Hide the popup after 5 seconds
+        }, 5000);
+    }
+
+    {% if messages %}
+    {% for message in messages %}
+    show_message('{{ message }}'); // Trigger the popup for each message
+    {% endfor %}
+    {% endif %}
+
+</script>
+</html>

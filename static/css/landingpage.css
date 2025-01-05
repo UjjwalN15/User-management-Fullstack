@@ -1,0 +1,64 @@
+.landing-page{
+    height: 100vh;
+    width: 100vw;
+    background-color: #333;
+    background-image: url('/static/assets/th.jpeg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    flex-direction: column;
+    gap: 100px;
+}
+header{
+    color: white;
+    font-size: 3rem;
+    padding-top: 50px;
+}
+header h2{
+    padding: 20px 10px 10px 10px;
+    border-bottom: 10px solid white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.landing-content, .landing-buttons{
+    width: 75%;
+    color: white;
+    line-height: 2rem;
+}
+.landing-buttons{
+    gap: 100px;
+}
+.landingbutton{
+    font-size: 2rem;
+    padding: 20px;
+    background-color: #aaa;
+    border-radius: 20px;
+    color: white;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+.landingbutton:hover{
+    transform: translateY(-15px);
+}
+
+@media screen and (max-width: 900px){
+    .landing-page{
+        padding: 20px 5px;
+        gap: 20px;
+    }
+    header h2{
+        font-size: 1.5rem;
+        border-bottom: 5px solid white;
+    }
+    .landing-content{
+        padding: 20px;
+        width: 100%;
+        font-size: 1rem;
+    }
+    .landingbutton{
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+}

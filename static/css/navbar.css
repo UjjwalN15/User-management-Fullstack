@@ -1,0 +1,25 @@
+header{
+    height: 100px;
+    width: 100vw;
+}
+.container{
+    padding: 20px;
+}
+nav{
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.25rem;
+    color: black;
+    background-color: #aaa;
+    padding: 20px;
+    border-radius: 20px;
+    position: fixed;
+    z-index: 1000;
+}
+.name-container a{
+    color: black;
+}
+ul{
+    gap: 30px;
+}

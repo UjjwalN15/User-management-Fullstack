@@ -1,0 +1,54 @@
+
+.container h2{
+    align-self: center;
+    gap: 50px;
+}
+.container form{
+    gap: 30px;
+}
+.dashboard-content{
+    margin-top: 50px;
+}
+.container form input:read-only{
+    width: 90%;
+    outline: none;
+    border: none;
+    font-size: 1.5rem;
+}
+.email, .password{
+    gap: 20px;
+    font-size: 1.5rem;
+    align-items: center;
+}
+#edit_email, #edit_password{
+    cursor: pointer;
+}
+.edit_password_box{
+    gap: 20px;
+    opacity: 0;
+    z-index: -10;
+}
+.edit_password_box input, .edit_password_box label{
+    font-size: 1.25rem;
+    padding: 10px;
+}
+.submit-container .button{
+    width: max-content;
+}
+#change_profile_form input[type="submit"]{
+    width: max-content;
+    align-self: center;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.button{
+    margin-top: 20px;
+    width: max-content;
+    padding: 10px;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}

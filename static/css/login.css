@@ -1,0 +1,83 @@
+.login, .register{
+    height: 100vh;
+    width: 100vw;
+    background-color: #333;
+    background-image: url(/assets/th.jpeg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.login-form, .register-form{
+    gap: 50px;
+    width: 50%;
+    color: white;
+    flex-direction: column;
+}
+.login-form h2, .register-form h2{
+    width: max-content;
+    padding: 10px;
+    font-size: 3rem;
+    border-bottom: 10px solid white;
+    border-radius: 20px;
+}
+.login-form form, .register-form form{
+    width: 100%;
+    gap: 20px;
+    padding: 20px;
+}
+#popup-message{
+    align-self: center;
+    background-color: red;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.25rem;
+    display: none;
+}
+.login-form form input, .register-form form input{
+    padding: 20px;
+    font-size: 1.5rem;
+    border-radius: 20px;
+}
+.login-form form input:focus, .register-form form input:focus{
+    border: none;
+    outline: none;
+}
+.login-button, .register-button{
+    width: max-content;
+    border-radius: 20px;
+    align-self: center;
+    cursor: pointer;
+}
+.user-selection{
+    gap: 20px;
+    font-size: 1.5rem;
+}
+.user-selection input{
+    font-size: 2rem;
+}
+input[type="radio"] {
+    transform: scale(1.5); /* Adjust the scale as needed */
+    margin-right: 10px; /* Add spacing for better alignment */
+}
+
+@media screen and (max-width: 900px){
+    .login-form, .register-form{
+        width: 100%;
+    }
+    .login-form form, .register-form form{
+        text-align: center;
+    }
+    .login-form form p, .register-form form p{
+        font-size: 1rem;
+    }
+    .login-form form input, .register-form form input{
+        font-size: 1rem;
+        padding: 10px;
+    }
+    .user-selection{
+        font-size: 1rem;
+    }
+}

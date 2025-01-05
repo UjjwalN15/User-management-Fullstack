@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+    {%load static%}
+    <link rel="stylesheet" href="{%static 'css/utility.css'%}">
+    <link rel="stylesheet" href="{%static 'css/create_post.css'%}">
+</head>
+<body>
+    {%include 'navbar.html'%}
+    <section class="create-post-body flex-center">
+        <div class="container flex-column">
+            <h2>Edit a Post</h2>
+            <form action="{% url 'edit_post' post.id%}" method="post" class="flex-column flex-column" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="image-input">
+                    <label for="post-image">Current Image:</label>
+                    <div>
+                        <img src="{{ post.image.url }}" alt="Current Image" name="current-image" style="max-width: 200px; max-height: 200px;">
+                    </div>
+                    <label for="post-image">Choose a New Image: </label>
+                    <input type="file" id="post-image" name="new-image">
+                </div>
+                <div class="title-input">
+                    <label for="title">Title :</label>
+                    <input type="text" id="title" name="post-title" required value="{{post.title}}">
+                </div>
+                <div class="description-input">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" rows="5" cols="30" required>{{post.description}}</textarea>
+                </div>
+                <input type="submit" value="Save">
+            </form>
+        </div>
+    </section>
+</body>
+<script>
+    function alert_box(message){
+        alert(message);
+    }
+    {% if messages %}
+    alert_box('{{ message }}');
+    {% endif %}
+</script>
+</html>

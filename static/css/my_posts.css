@@ -1,0 +1,44 @@
+header{
+    height: 100px;
+    width: 100vw;
+}
+.container{
+    padding: 20px;
+    gap: 20px;
+}
+nav{
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.25rem;
+    color: black;
+}
+ul{
+    gap: 30px;
+}
+.posts{
+    margin-top: 50px;
+}
+.my-post-buttons{
+    align-items: center;
+    gap:10px;
+}
+.my-post-buttons button{
+    font-size: 1.25rem;
+    padding: 10px;
+    width: 100%;
+}
+.my-post-buttons a{
+    width: 100%;
+}
+.flex-center{
+    width:100%;
+}
+.edit{
+    width: 100%;
+}
+.edit:hover{
+    background-color: green !important ;
+}
+.delete:hover{
+    background-color: red !important;
+}

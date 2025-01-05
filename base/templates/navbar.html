@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%load static%}
+    <title>Navbar</title>
+    <link rel="stylesheet" href="{%static 'css/utility.css'%}">
+    <link rel="stylesheet" href="{%static 'css/navbar.css'%}">
+</head>
+<body>
+    <header class="flex-center">
+        <div class="container">
+            <nav class="flex">
+                <div class="logo-container">
+                    <h3><a href="{%url 'enterprise_user_home'%}" title="Landing Page">User Management System</a></h3>
+                </div>
+                <div class="menu">
+                    <ul class="flex">
+                        <li><a href="{%url 'create_post'%}" title="Create a post">Create a Post</a></li>
+                        <li><a href="{%url 'my_posts'%}" title="My Posts">My Posts</a></li>
+                    </ul>
+                </div>
+                <div class="name-container">Hi <a href="{%url 'dashboard'%}" title="Dashboard">{{user.email}}</a></div>
+            </nav>
+        </div>
+    </header>
+</body>
+</html>

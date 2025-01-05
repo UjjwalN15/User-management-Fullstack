@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dahsboard</title>
+    {%load static%}
+    <link rel="stylesheet" href="{%static 'css/utility.css'%}">
+    <link rel="stylesheet" href="{%static 'css/enterprise_home.css'%}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    {% include 'user_navbar.html'%}
+    <section class="posts flex-center">
+        <h2>POSTS</h2>
+        <div class="container flex" id="post-container">
+            {% comment %} {% for post in posts %}
+            <div class="post-card flex-column">
+                <img src="{{post.image.url}}" alt="Image for {{post.title}}">
+                <h3>{{post.title}}</h3>
+                <h3>Author : {{post.author.email}}</h3>
+                <div class="clicksandviews space-between">
+                    <div class="views">
+                        <i class="fa-solid fa-eye"></i>
+                        <span>{{post.views}}</span>
+                    </div>
+                    <div class="clicks">
+                        <i class="fa-solid fa-arrow-pointer"></i>
+                        <span>{{post.clicks}}</span>
+                    </div>
+                </div>
+                <button>View Post</button>
+            </div>
+            {%endfor%} {% endcomment %}
+            {% for post in posts %}
+            <div class="post-card flex-column">
+                <img src="{{ post.image.url }}" alt="Image for {{ post.title }}">
+                <h3>{{ post.title }}</h3>
+                <h3>Author: {{ post.author.email }}</h3>
+                <div class="clicksandviews space-between">
+                    <div class="views">
+                        <i class="fa-solid fa-eye"></i>
+                        <span>{{ post.views }}</span>
+                    </div>
+                    <div class="clicks">
+                        <i class="fa-solid fa-arrow-pointer"></i>
+                        <span>{{ post.clicks }}</span>
+                    </div>
+                </div>
+
+                <!-- Updated View Post Button with Form -->
+                <form action="{% url 'user_view_post' post.id %}" method="POST" class="flex-center">
+                    {% csrf_token %}
+                    <button type="submit" class="view-post-btn">View Post</button>
+                </form>
+            </div>
+            {% endfor %}
+
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My DashBoard</title>
+    {%load static%}
+    <link rel="stylesheet" href="{%static 'css/utility.css'%}">
+    <link rel="stylesheet" href="{%static 'css/dashboard.css'%}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    {%include 'user_navbar.html'%}
+    <section class="dashboard-content flex-center" id="dashboard">
+        <div class="container flex flex-column">
+            <h2>DashBoard</h2>
+            <form action="" method="post" class="flex-column" id="change_profile_form">
+                {% csrf_token %}
+                <div class="email space-between">
+                    <div>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" value="{{user.email}}" readonly>
+                    </div>
+                    {% comment %} <i id="edit_email" class="fa-solid fa-pen-to-square"></i> {% endcomment %}
+                </div>
+                <div class="password space-between">
+                    <div>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" value="{{user.hashed_password}}" readonly>
+                    </div>
+                    <div class="flex">
+                        <input type="checkbox" id="show_password" title="Show Password">Show Password
+                    </div>
+                    <i id="edit_password" class="fa-solid fa-pen-to-square"></i>
+                </div>
+                <div class="edit_password_box flex-column">
+                    <label for="new_password">Enter your new password : </label>
+                    <input type="password" id="new_password" name="new_password">
+                    <label for="confirm_password">Confirm your new password : </label>
+                    <input type="password" id="confirm_password">
+                </div>
+                <input type="submit" value="Save">
+            </form>
+            <div class="flex-center">
+                <a href="{% url 'logout' %}"><button class="button">Logout</button></a>
+            </div>
+        </div>
+    </section>
+
+<script src="{%static 'js/main.js'%}"></script>
+</body>
+<script>
+    const password = document.getElementById('password');
+    const show_password = document.getElementById('show_password');
+    show_password.addEventListener('change',()=>{
+        if (show_password.checked){
+            password.type='text';
+        }else{
+            password.type='password';
+        }
+    });
+</script>
+</html>
