@@ -56,6 +56,23 @@ def register(request):
         return redirect('login')
     return render(request, 'register.html')
 
+def forgot_password(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        if User.objects.filter(email=email).exists():
+            user = User.objects.get(email=email)
+            password = request.POST.get('password')
+            user.set_password(password)
+            user.hashed_password = password
+            user.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, "Password updated Successfully")
+            return redirect('login')
+        else:
+            messages.error(request, "Email not found. Please register.")
+            return redirect('register')
+    return render(request, 'forgot_password.html')
+
 @login_required(login_url='login')
 def logout(request):
     auth_logout(request)
