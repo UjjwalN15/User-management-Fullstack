@@ -41,6 +41,68 @@
                 </div>
                 <input type="submit" value="Save">
             </form>
+            <!-- Display Required Skills -->
+            <div class="skills">
+                <h4>My Skills:</h4>
+                <ul>
+                    {% for skill in user.skills %}
+                    <li>{{ skill }},</li>
+                    {% empty %}
+                    <li>No skills listed.</li>
+                    {% endfor %}
+                </ul>
+                <button id="add_skill_btn">Add Skills</button>
+            </div>
+            <!-- Skills Form -->
+            <form method="POST" action="{% url 'update_user_data' %}">
+                {% csrf_token %}
+                <div id="skills-container">
+                    <label for="skills-input">Enter Required Skills:</label>
+                    <ul id="skills-list">
+                        {% for skill in user.skills %}
+                        <li>
+                            <input type="text" name="skills[]" value="{{skill}}" placeholder="Enter required skill">
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <button type="button" id="add-skill-btn">Add Skill</button>
+                    <button type="button" id="remove-skill-btn">Remove Skill</button>
+                    <div class="flex-center">
+                        <button class="button" type="submit" name="form_type" value="skills_form">Save Skills</button>
+                    </div>
+                </div>
+            </form>
+            <!-- Display Required Experiences -->
+            <div class="experiences">
+                <h4>My Experiences:</h4>
+                <ul>
+                    {% for experience in user.experiences %}
+                    <li>{{ experience }}</li>
+                    {% empty %}
+                    <li>No experiences listed.</li>
+                    {% endfor %}
+                </ul>
+                <button id="add_experience_btn">Add Experience</button>
+            </div>
+            <!-- Experiences Form -->
+            <form method="POST" action="{% url 'update_user_data' %}">
+                {% csrf_token %}
+                <div id="experience-container">
+                    <label for="experience-input">Enter Required Experiences:</label>
+                    <ul id="experience-list">
+                        {% for experience in user.experiences %}
+                        <li>
+                            <input type="text" name="experiences[]" value="{{experience}}" placeholder="1. Enter required experience">
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <button type="button" id="add-experience-btn">Add Experience</button>
+                    <button type="button" id="remove-experience-btn">Remove Experience</button>
+                    <div class="flex-center">
+                        <button class="button" type="submit" name="form_type" value="experiences_form">Save Experiences</button>
+                    </div>
+                </div>
+            </form>
             <div class="flex-center">
                 <a href="{% url 'logout' %}"><button class="button">Logout</button></a>
             </div>
@@ -66,5 +128,57 @@
     {% if messages %}
     alert_box('{{ message }}');
     {% endif %}
+
+    document.getElementById('add-skill-btn').addEventListener('click', function () {
+        const skillsList = document.getElementById('skills-list');
+        const newSkill = document.createElement('li');
+        newSkill.innerHTML = '<input type="text" name="skills[]" placeholder="Enter required skill">';
+        skillsList.appendChild(newSkill);
+    });
+    document.getElementById('remove-skill-btn').addEventListener('click', function () {
+        const skillsList = document.getElementById('skills-list');
+        if (skillsList.lastElementChild) {
+            skillsList.removeChild(skillsList.lastElementChild);
+        } else {
+            alert('No more skills to remove');
+        }
+    });
+    document.getElementById('add-experience-btn').addEventListener('click', function () {
+        const experienceList = document.getElementById('experience-list');
+        const newExperience = document.createElement('li');
+        newExperience.innerHTML = '<input type="text" name="experiences[]" placeholder="Enter required experience">';
+        experienceList.appendChild(newExperience);
+    });
+    document.getElementById('remove-experience-btn').addEventListener('click', function () {
+        const experienceList = document.getElementById('experience-list');
+        if (experienceList.lastElementChild) {
+            experienceList.removeChild(experienceList.lastElementChild);
+        } else {
+            alert('No more experiences to remove');
+        }
+    });
+
+    const add_skill_btn = document.getElementById('add_skill_btn');
+    add_skill_btn.addEventListener('click', function () {
+        const skills_container = document.getElementById('skills-container');
+        if (skills_container.style.display === "none" || skills_container.style.display === "") {
+            skills_container.style.display = "block";
+            add_skill_btn.innerText="Close";
+        } else {
+            skills_container.style.display = "none";
+            add_skill_btn.innerText="Add Skills";
+        }
+    });
+    const add_experience_btn = document.getElementById('add_experience_btn');
+    add_experience_btn.addEventListener('click', function () {
+        const experience_container = document.getElementById('experience-container');
+        if (experience_container.style.display === "none" || experience_container.style.display === "") {
+            experience_container.style.display = "block";
+            add_experience_btn.innerText="Close";
+        } else {
+            experience_container.style.display = "none";
+            add_experience_btn.innerText="Add Experience";
+        }
+    });
 </script>
 </html>

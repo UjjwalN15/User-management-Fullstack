@@ -16,6 +16,29 @@
             <h2>{{post.title}}</h2>
             <img src="{{post.image.url}}" alt="Post Image">
             <p>{{post.description}}</p>
+            <!-- Display Required Skills -->
+            <div class="skills">
+                <h4>Required Skills:</h4>
+                <ul>
+                    {% for skill in post.skills %}
+                    <li>{{ skill }},</li>
+                    {% empty %}
+                    <li>No skills listed.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- Display Required Experiences -->
+            <div class="experiences">
+                <h4>Required Experiences:</h4>
+                <ul>
+                    {% for experience in post.experiences %}
+                    <li>{{ experience }}</li>
+                    {% empty %}
+                    <li>No experiences listed.</li>
+                    {% endfor %}
+                </ul>
+            </div>
             <form action="{% url 'like_post_user' post.id %}" method="POST" class="flex-center">
                 {% csrf_token %}
                 <button class="button like-btn">Like this post</button>

@@ -2,7 +2,7 @@
     align-self: center;
     font-size: 2rem;
 }
-.container input[type="submit"]{
+.container input[type="submit"], .button{
     width: max-content;
     align-self: center;
     padding: 10px;
@@ -20,4 +20,79 @@ form input, textarea, form label{
 }
 .create-post-body{
     margin-top: 100px;
+}
+.skills, .experiences{
+    margin-top: 50px;
+}
+.experiences ul li, .skills ul li{
+    list-style-type:disc;
+    margin: 10px 0 0 20px;
+}
+.skills ul{
+    flex-wrap: wrap;
+}
+.button{
+    margin-top: 20px;
+    width: max-content;
+    padding: 10px;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+#add_skill_btn, #add_experience_btn{
+    padding:10px;
+    margin-top:10px;
+    cursor:pointer;
+    font-size:larger;
+    border:none;
+    outline:none;
+    border-radius:10px;
+}
+
+#skills-container, #experience-container {
+    margin-top:20px;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    display:none;
+}
+
+#skills-list, #experience-list {
+    width: 100%;
+    margin-top: 20px;
+    list-style-type: decimal;
+    padding-left: 20px;
+}
+
+#skills-list li, #experience-list li {
+    width: 100%;
+    margin-bottom: 10px;
+}
+#skills-list li input, #experience-list li input{
+    width: 100%;
+    padding: 10px;
+}
+
+#add-skill-btn, #add-experience-btn {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+#remove-skill-btn, #remove-experience-btn{
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+#add-skill-btn:hover, #add-experience-btn:hover {
+    background-color: #0056b3;
 }

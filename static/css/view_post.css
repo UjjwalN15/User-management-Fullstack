@@ -13,6 +13,13 @@
 .view-post .container p{
     font-size: 1.2rem;
 }
+.experiences ul li, .skills ul li{
+    list-style-type:disc;
+    margin: 10px 0 0 20px;
+}
+.skills ul{
+    flex-wrap: wrap;
+}
 .button{
     width: max-content;
     padding: 10px;

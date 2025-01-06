@@ -23,6 +23,26 @@
                     <label for="title">Title :</label>
                     <input type="text" id="title" name="post-title" required>
                 </div>
+                <div id="skills-container">
+                    <label for="skills-input">Enter Required Skills:</label>
+                    <ul id="skills-list">
+                        <li>
+                            <input type="text" name="skills[]" placeholder="Enter required skill">
+                        </li>
+                    </ul>
+                    <button type="button" id="add-skill-btn">Add Skill</button>
+                    <button type="button" id="remove-skill-btn">Remove Skill</button>
+                </div>
+                <div id="experience-container">
+                    <label for="experience-input">Enter Required Experiences:</label>
+                    <ul id="experience-list">
+                        <li>
+                            <input type="text" name="experiences[]" placeholder="Enter required experience">
+                        </li>
+                    </ul>
+                    <button type="button" id="add-experience-btn">Add experience</button>
+                    <button type="button" id="remove-experience-btn">Remove Experience</button>
+                </div>
                 <div class="description-input">
                     <label for="description">Description:</label>
                     <textarea id="description" name="post-description" rows="5" cols="30" required></textarea>
@@ -32,4 +52,46 @@
         </div>
     </section>
 </body>
+<script>
+    const skills_container = document.getElementById("skills-container");
+    const experience_container = document.getElementById("experience-container");
+
+    document.addEventListener('DOMContentLoaded', () => {
+        skills_container.style.display = 'block';
+        experience_container.style.display = 'block';
+    });
+
+    document.getElementById('remove-skill-btn').addEventListener('click', function () {
+        const skillsList = document.getElementById('skills-list');
+        if (skillsList.lastElementChild) {
+            skillsList.removeChild(skillsList.lastElementChild);
+        } else {
+            alert('No more skills to remove');
+        }
+    });
+
+
+    document.getElementById('add-skill-btn').addEventListener('click', function () {
+        const skillsList = document.getElementById('skills-list');
+        const newSkill = document.createElement('li');
+        newSkill.innerHTML = '<input type="text" name="skills[]" placeholder="Enter required skill">';
+        skillsList.appendChild(newSkill);
+    });
+    
+    document.getElementById('add-experience-btn').addEventListener('click', function () {
+        const experienceList = document.getElementById('experience-list');
+        const newExperience = document.createElement('li');
+        newExperience.innerHTML = '<input type="text" name="experiences[]" placeholder="Enter required experience">';
+        experienceList.appendChild(newExperience);
+    });
+    document.getElementById('remove-experience-btn').addEventListener('click', function () {
+        const experienceList = document.getElementById('experience-list');
+        if (experienceList.lastElementChild) {
+            experienceList.removeChild(experienceList.lastElementChild);
+        } else {
+            alert('No more experiences to remove');
+        }
+    });
+    
+</script>
 </html>

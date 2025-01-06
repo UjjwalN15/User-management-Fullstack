@@ -110,8 +110,10 @@ def create_post(request):
         else:
             print("No image uploaded")
         title = request.POST.get('post-title')
+        skills = request.POST.getlist("skills[]")  # Retrieves all skills inputs
+        experiences = request.POST.getlist("experiences[]")  # Retrieves all experiences inputs
         description = request.POST.get('post-description')
-        new_post = Posts.objects.create(image=image, title=title,author=user, description=description)
+        new_post = Posts.objects.create(image=image, title=title,skills=skills, experiences=experiences,author=user, description=description)
         new_post.save()
         return redirect('my_posts')
     return render(request, 'create_post.html')
@@ -207,12 +209,40 @@ def edit_post(request, post_id):
     if request.method == 'POST':
         new_image = request.FILES.get('new-image')
         title = request.POST.get('post-title')
+        skills = request.POST.getlist("skills[]")  # Retrieves all skills inputs
+        experiences = request.POST.getlist("experiences[]")  # Retrieves all experiences inputs
         description = request.POST.get('description')
         if new_image:
             post.image = new_image
         post.title = title
+        post.skills = skills
+        post.experiences = experiences
         post.description = description
         post.save()
         messages.success(request, 'Post Updated Successfully')
         return redirect('my_posts')
     return render(request, 'edit_post.html', {'post': post})
+
+# def get_normal_user(request):
+#     normal_users = User.objects.filter(user_type=2)
+#     print(normal_users)
+#     return render(request, 'home.html', {'normal_users': normal_users})
+
+@login_required
+def update_user_data(request):
+    if request.method == "POST":
+        form_type = request.POST.get("form_type")
+
+        if form_type == "skills_form":
+            # Process skills form data
+            skills = request.POST.getlist("skills[]")
+            request.user.skills = skills
+            request.user.save()
+            return redirect('dashboard')  # Replace 'profile' with the appropriate URL name
+
+        elif form_type == "experiences_form":
+            # Process experiences form data
+            experiences = request.POST.getlist("experiences[]")
+            request.user.experiences = experiences
+            request.user.save()
+            return redirect('dashboard')  # Replace 'profile' with the appropriate URL name

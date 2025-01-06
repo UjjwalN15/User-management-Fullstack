@@ -30,6 +30,8 @@ class User(AbstractUser):
     password = models.CharField(max_length=300)
     hashed_password = models.CharField(max_length=300)
     user_type = models.ForeignKey(Group, on_delete=models.CASCADE, related_name="profile", null=True, blank=True)
+    skills = models.JSONField(default=list)
+    experiences = models.JSONField(default=list)
     
     # Remove the default username field
     username = None
@@ -45,6 +47,8 @@ class User(AbstractUser):
 class Posts(models.Model):
     image = models.ImageField(upload_to='post_images/')
     title = models.CharField(max_length=300)
+    skills = models.JSONField(default=list)
+    experiences = models.JSONField(default=list)
     description = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     clicks = models.IntegerField(default=0)

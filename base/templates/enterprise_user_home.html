@@ -33,21 +33,45 @@
             </div>
             {%endfor%} {% endcomment %}
             {% for post in posts %}
-            <div class="post-card flex-column">
+            <div class="post-card flex">
                 <img src="{{ post.image.url }}" alt="Image for {{ post.title }}">
-                <h3>{{ post.title }}</h3>
-                <h3>Author: {{ post.author.email }}</h3>
-                <div class="clicksandviews space-between">
-                    <div class="views">
-                        <i class="fa-solid fa-eye"></i>
-                        <span>{{ post.views }}</span>
+                <div class="card-content flex-column">
+                    <h3>{{ post.title }}</h3>
+                    <div class="skills">
+                        <h4>Required Skills:</h4>
+                        <ul class="flex">
+                            {% for skill in post.skills %}
+                            <li>{{ skill }},</li>
+                            {% empty %}
+                            <li>No skills listed.</li>
+                            {% endfor %}
+                        </ul>
                     </div>
-                    <div class="clicks">
-                        <i class="fa-solid fa-heart"></i>
-                        <span>{{ post.clicks }}</span>
+
+                    {% comment %} <!-- Display Required Experiences -->
+                    <div class="experiences">
+                        <h4>Required Experiences:</h4>
+                        <ul>
+                            {% for experience in post.experiences %}
+                            <li>{{ experience }}</li>
+                            {% empty %}
+                            <li>No experiences listed.</li>
+                            {% endfor %}
+                        </ul>
+                    </div> {% endcomment %}
+
+                    <h5>Author: {{ post.author.email }}</h5>
+                    <div class="clicksandviews flex">
+                        <div class="views">
+                            <i class="fa-solid fa-eye"></i>
+                            <span>{{ post.views }}</span>
+                        </div>
+                        <div class="clicks">
+                            <i class="fa-solid fa-heart"></i>
+                            <span>{{ post.clicks }}</span>
+                        </div>
                     </div>
                 </div>
-
                 <!-- Updated View Post Button with Form -->
                 <form action="{% url 'view_post' post.id %}" method="POST" class="flex-center">
                     {% csrf_token %}

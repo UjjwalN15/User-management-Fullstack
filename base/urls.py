@@ -22,6 +22,8 @@ urlpatterns = [
     path('like_post/<int:post_id>/', like_post, name='like_post'),
     path('like_post_user/<int:post_id>/', like_post_user, name='like_post_user'),
     path('logout/', logout, name='logout'),
+    # path('get_normal_user/', get_normal_user, name='get_normal_user'),
+    path('update_user_data/', update_user_data, name='update_user_data'),  # If using a single view
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
